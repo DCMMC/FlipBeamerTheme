@@ -54,20 +54,20 @@
 %% This template uses typical OS X and Adobe fonts
 \defaultfontfeatures{Mapping=tex-text}	% This seems to be important for mapping glyphs properly
 
-\setmainfont{Gill Sans}			% Beamer ignores "main font" in favor of sans font
-\setsansfont{Gill Sans}			% This is the font that beamer will use by default
+\setmainfont{PT Sans}			% Beamer ignores "main font" in favor of sans font
+\setsansfont{PT Sans}			% This is the font that beamer will use by default
 % \setmainfont{Gill Sans Light}		% Prettier, but harder to read
 
-\setbeamerfont{title}{family=\fontspec{Gill Sans}}
+\setbeamerfont{title}{family=\fontspec{PT Sans}}
 
 
-\newcommand{\handwriting}{\fontspec{augie}} % From Emerald City, free font
-% \newcommand{\handwriting}{}	% If you prefer no special handwriting font or don't have augie
+% \newcommand{\handwriting}{\fontspec{augie}} % From Emerald City, free font
+\newcommand{\handwriting}{}	% If you prefer no special handwriting font or don't have augie
 
 %% Gill Sans doesn't look very nice when boldfaced
 %% This is a hack to use Helvetica instead
 %% Usage: \textbf{\forbold some stuff}
-\newcommand{\forbold}{\fontspec{Helvetica}}
+\newcommand{\forbold}{\fontspec{PT Sans}}
 % \newcommand{\forbold}{} % if you want no special boldface
 
 
@@ -88,6 +88,11 @@
 \usepackage{multirow}			% For multi row cells in table
 \usepackage{arydshln} 			% For dashed lines in arrays and tables
 \usepackage{tikzfeynman}		% For Feynman diagrams
+% Syntax Highlighting in LaTeX, need pygments
+% Must build with xelatex -shell-escape -enable-8bit-chars.
+\usepackage{algorithm,algpseudocode}
+\usepackage{tikz}
+\usepackage{minted}
 % \usepackage{subfig}           % for sub figures
 % \usepackage{young}			% For Young Tableaux
 % \usepackage{xspace}			% For spacing after commands
@@ -113,15 +118,28 @@
 %% "\alert" is already a beamer pre-defined
 
 
-
-\author[Flip Tanedo\quad {pt267@cornell.edu}]{Flip Tanedo}
-\title[Flip's Beamer Theme]{Flip's Beamer Theme}
-\institute{Cornell University}
+% DCMMC: 显示在页脚的作者,标题, 单位
+\author[Wentao Xiao\quad {wentao.xiaoo@mail.dhu.edu.cn}]{Wentao Xiao}
+\title[A demo for Flip's Beamer Theme]{A demo for Flip's Beamer Theme}
+\institute{Donghua University}
+% DCMMMC: 显示在首页的日期
 \date{\today}
 
+% color for minted
+\definecolor{friendlybg}{HTML}{f0f0f0}
 
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Contents}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
 
 \begin{document}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % Additional  settings %

@@ -114,7 +114,9 @@
 \advance\@tempdima by\beamer@leftmargin%
 \advance\@tempdima by\beamer@rightmargin%
 
-\vbox{}\vskip-3.5ex%
+% DCMMC: 这是 frametitle 到基线的距离
+%\vbox{}\vskip-3.5ex%
+\vbox{}\vskip-2.5ex%
 %
 \begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{titlelike}
 	\usebeamerfont{frametitle}%
@@ -163,6 +165,7 @@
 	\begin{tikzpicture}[overlay]
 	\usebeamercolor[fg]{titlelike}	% alternately, topbarlike would be a good beamercolor
 	\draw[fill] (-\paperwidth,0) rectangle (0,-3pt);
+	% \draw[fill=blue, fill opacity=0.5] (-\paperwidth,0) rectangle (-2pt,-4pt);
 	\end{tikzpicture}
 \fi
 %
