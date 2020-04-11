@@ -1,11 +1,11 @@
 %% BEAMER THEME FLIP 2012: Main tex file for compiling
-%$ Compile this file. 
+%$ Compile this file.
 %%
 %% Copyright 2012 by Flip Tanedo
 %% This file may be distributed and/or modified
 %% 	1. under the LaTeX Project Public License and/or
 %% 	2. under the GNU Public License.
-%% 
+%%
 %% If you e-mail Flip (pt267@cornell.edu) to say that you
 %% like this style file, then it would make him smile.
 
@@ -22,13 +22,13 @@
 \usetheme[
 	bullet=circle,		% Other option: square
 	bigpagenumber,		% circled page number on lower right
-	topline=true,			% colored bar at the top of the frame 
+	topline=true,			% colored bar at the top of the frame
 	shadow=false,			% Shading for beamer blocks
 	watermark=BG_lower,	% png file for the watermark
 	]{Flip}
 
 
-\newcommand{\titleimage}{title}			% Custom title 
+\newcommand{\titleimage}{title}			% Custom title
 \newcommand{\tanedo}{tanedolight}		% Custom author name
 \newcommand{\CMSSMDM}{CMSSMDMlight.png}	% light background plot
 
@@ -39,7 +39,7 @@
 
 %% Default font: lmodern, doesn't require fontspec % solves some default warnings
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}			
+\usepackage{lmodern}
 %\usepackage{sfmath}		% Sans Serif Math, off by default
 
 %% Protects fonts from Beamer screwing with them
@@ -50,7 +50,7 @@
 %% XeLaTeX fonts: (comment out if you don't use XeLaTeX)
 
 %% For advanced fonts: access local OS X fonts
-\usepackage[no-math]{fontspec}		
+\usepackage[no-math]{fontspec}
 %% This template uses typical OS X and Adobe fonts
 \defaultfontfeatures{Mapping=tex-text}	% This seems to be important for mapping glyphs properly
 
@@ -76,6 +76,7 @@
 % Usual LaTeX Packages %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{xargs}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -93,6 +94,16 @@
 \usepackage{algorithm,algpseudocode}
 \usepackage{tikz}
 \usepackage{minted}
+\usepackage{braket} % needed for \Set
+% textblock
+%\usepackage{textpos}
+% Typesetting theorems (AMS style)
+\usepackage{amsthm}
+% ifthenelse
+\usepackage{ifthen}
+% math equations
+\usepackage{bm}
+
 % \usepackage{subfig}           % for sub figures
 % \usepackage{young}			% For Young Tableaux
 % \usepackage{xspace}			% For spacing after commands
@@ -107,11 +118,15 @@
 \usetikzlibrary{mindmap,trees}	% For mind map
 % http://www.texample.net/tikz/examples/computer-science-mindmap/
 
+% DCMMC: for university logo
+\newif\ifplacelogo % create a new conditional
+\placelogotrue % set it to true
 
 % SOME COMMANDS THAT I FIND HANDY
 % \renewcommand{\tilde}{\widetilde} % dinky tildes look silly, dosn't work with fontspec
 \newcommand{\comment}[1]{\textcolor{comment}{\footnotesize{#1}\normalsize}} % comment mild
-\newcommand{\Comment}[1]{\textcolor{Comment}{\footnotesize{#1}\normalsize}} % comment bold
+% DCMMC: Command already defined!
+\renewcommand{\Comment}[1]{\textcolor{Comment}{\footnotesize{#1}\normalsize}} % comment bold
 \newcommand{\COMMENT}[1]{\textcolor{COMMENT}{\footnotesize{#1}\normalsize}} % comment crazy bold
 \newcommand{\Alert}[1]{\textcolor{Alert}{#1}} % louder alert
 \newcommand{\ALERT}[1]{\textcolor{ALERT}{#1}} % loudest alert
@@ -128,14 +143,17 @@
 % color for minted
 \definecolor{friendlybg}{HTML}{f0f0f0}
 
-%The next block of commands puts the table of contents at the 
+%The next block of commands puts the table of contents at the
 %beginning of each section and highlights the current section:
 \AtBeginSection[]
 {
+	% DCMMC: disable university logo for TOC
+	\placelogofalse
 	\begin{frame}
 		\frametitle{Contents}
 		\tableofcontents[currentsection]
 	\end{frame}
+	\placelogotrue
 }
 
 \begin{document}
@@ -159,7 +177,7 @@
 % \begin{frame}{test}
 % 	Main text still in Gill Sans
 % 	$$\frac{f}{f^4}$$
-% 	
+%
 % 	But math is now different
 % 	\Large
 % 	$$\frac{f^2}{f^4}$$

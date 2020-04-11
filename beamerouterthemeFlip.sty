@@ -117,8 +117,9 @@
 % DCMMC: 这是 frametitle 到基线的距离
 %\vbox{}\vskip-3.5ex%
 \vbox{}\vskip-2.5ex%
-%
-\begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{titlelike}
+
+% DCMMC: rightskip 用于防止覆盖学校 logo
+\begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima,rightskip=2.5cm plus \beamer@rightmargin]{titlelike}
 	\usebeamerfont{frametitle}%
 	\vbox{}\vskip-1ex%
 	\if@tempswa\else\csname beamer@fte#1\endcsname\fi%
@@ -137,6 +138,20 @@
   	\if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
 \end{beamercolorbox}%
 %%
+
+% https://tex.stackexchange.com/questions/27906/positioning-logo-in-the-front-page-as-well-as-slides
+% DCMMC: 学校 logo
+% Will not show in TOC frames and frames without frametitle
+\ifplacelogo
+{\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=north east,yshift=2pt] at (current page.north east) {\includegraphics[height=1cm]{dhu-logo.png}};
+	\end{tikzpicture}}
+%{\begin{picture}(0,0)(0,0)
+%	\put(240,10)
+%	{\includegraphics[height=1cm]{dhu-logo.png}}
+%\end{picture}}
+\else
+\fi
 
 % \def\beamer@fteright{\vskip0.35cm\advance\leftskip by 1.7cm\advance\rightskip by1.7cm}
 }

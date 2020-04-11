@@ -4,14 +4,14 @@
 { %% This is a total kludge for a fancy title page background
 %\setbeamertemplate{sidebar right}{\llap{\includegraphics[width=\paperwidth,height=\paperheight]{BG_upper}}}
 \setbeamertemplate{sidebar right}{\llap{\includegraphics[height=\paperheight]{BG_DCMMC}}}
-\begin{frame}[c]%{\phantom{title page}} 
+\begin{frame}[c]%{\phantom{title page}}
 % The \phantom{title page} is a kludge to get the red bar on top
 % \titlepage
 \begin{center}
 	% \includegraphics[width=7cm]{WarpedPenguinsReturn}
 
 %	\begin{tikzpicture}%[show background grid] %% Use grid for positioning, then turn off
-%		\node[inner sep=0pt,above right] (title) 
+%		\node[inner sep=0pt,above right] (title)
 %			{ \includegraphics[width=7cm]{\titleimage} };
 %		% \node (title) at (1.5,1.5) {};
 %	\end{tikzpicture}
@@ -22,18 +22,18 @@
 %	\quad
 	\vskip .2em
 	\Large \textcolor[rgb]{0.1098,0.2706,0.5294}{{\fontspec{Noto Sans CJK SC} 工作汇报} {\fontspec{Comic Sans MS} 2020-04-06}}
-	
+
 	\vskip 1.2em
 	\large \textcolor[rgb]{0.1098,0.2706,0.5294}{{\fontspec{Noto Sans CJK SC} 肖文韬}
 		{\fontspec{Comic Sans MS} 160800224}}
 	\end{flushright}
-	% \includegraphics[width=7cm]{\titleimage} 
-	
+	% \includegraphics[width=7cm]{\titleimage}
+
 	\vskip 2.6em
 	% DCMMC: journal/conference and link
 %	\footnotesize\textcolor{gray}{Journal of Cool Beans \texttt{[arXiv:1234.5678]}}
 %	\vspace{.5em}
-	
+
 %	 \includegraphics[height=1.5cm]{\tanedo} \quad
 %	{\fontspec{PT Sans} Wentao Xiao} \quad
 %	\includegraphics[height=1.5cm]{CUasym}\\
@@ -45,38 +45,38 @@
 
 %This block of code is for the table of contents after
 %the title page
+\placelogofalse
 \begin{frame}
 	\frametitle{Table of Contents}
 	\tableofcontents
 \end{frame}
-
+\placelogotrue
 
 \begin{frame}[c]{Beamer Theme Flip}{A work in progress}
 	This is a template for Flip's Beamer theme. Features:
 	\begin{itemize}
-		\item Option for dark or light background. 
-		\\ 
+		% \item Option for dark or light background.  \\
 		% \textcolor{charcoal}{Dark looks nicer, but white prints better. The goal is to be able to give a presentation with the dark background, but quickly recompile to get handouts with the white background.}
 		 % \comment{Dark looks nicer, but white prints better. The goal is to be able to give a presentation with the dark background, but quickly recompile to get handouts with the white background.}
 		\normalsize
-		\item Option for large `slide number / total slides' on bottom bar\\
+		% \item Option for large `slide number / total slides' on bottom bar\\
 		% \Comment{Dark looks nicer, but white prints better. The goal is to be able to give a presentation Dark looks nicer, but white prints better. The goal is to be able to give a presentation with the dark background, but quickly recompile to get handouts}
 		\item Option for watermark on top of a gradient background
 		\item Only works for PDFLaTeX/XeLaTeX! (Default on OS X)
-		\item ... work in progress! 
+		\item ... work in progress!
 	\end{itemize}
-	
+
 	\begin{block}{2012 updates}
 		The new package is streamlined for nicer code. Also uses \texttt{fontspec} for \textit{XeLaTeX} support. You can now abuse fonts.
 	\end{block}
-	
+
 \end{frame}
 
 \section{Fundamental Elements}
 
 %Changing visivility of the text
 \begin{frame}[c]{Animations of list}{This code will generate 4 slides}
-	
+
 	\begin{itemize}
 		\item<1-> Text visible on slide 1
 		\item<2-> Text visible on slide 2
@@ -88,16 +88,16 @@
 %Example of the \pause command
 \begin{frame}[c]{Example of the \texttt{pause} command}
 	In this slide \pause
-	
+
 	the text will be partially visible \pause
-	
+
 	And finally everything will be there
 \end{frame}
 
 \begin{frame}[fragile]{Examples of \texttt{minted} for syntax highlighting}
 	\begin{overprint}
 		\onslide<1>
-		\begin{minted}[linenos,tabsize=2,highlightlines={16-17},fontsize=\tiny,style=friendly,bgcolor=friendlybg]{python}
+		\begin{minted}[texcomments,linenos,tabsize=2,highlightlines={17-18},fontsize=\tiny,style=friendly,bgcolor=friendlybg]{python}
 import PyInstaller.__main__
 import os
 import platform
@@ -113,11 +113,9 @@ if UPX_PATH:
 	pyinstall_args.append('--upx-dir=%s' % (UPX_PATH))
 system = platform.system()
 exe_name = 'DHUHealthyFormTool'
+# $CE(\bm{y}, \hat{\bm{y}}) = - \bm{y} \log \hat{\bm{y}}$
 if system == 'Linux':
 	exe_name += '_Linux_amd64.bin'
-elif system == 'Windows':
-	pyinstall_args.append('--console')
-	exe_name += '_Windows_amd64.exe'
 elif system == 'Darwin':
 	exe_name += '_macOS_amd64.app'
 	pyinstall_args.append('--console')
@@ -128,26 +126,7 @@ pyinstall_args.append("DHU_healthy_form.py")
 if __name__ == '__main__':
 	PyInstaller.__main__.run(pyinstall_args)
 	\end{minted}
-%		\onslide<2>
-%		\begin{minted}[
-%		style=friendly,
-%		bgcolor=friendlybg
-%		]{bash}
-%		#!/bin/bash
-%		
-%		echo "Hello, world!"
-%		\end{minted}
 	\end{overprint}
-
-%	\uncover<1>{\begin{minted}{lua}
-%		print("foo")
-%		\end{minted}}
-%	\uncover<2>{begin{minted}{lua}
-%		print("bar")
-%	\end{minted}}
-%	\uncover<3>{\begin{minted}{lua}
-%	print("baz")
-%	\end{minted}}
 \end{frame}
 
 \begin{frame}[c]{Block Party}{Different kinds of blocks}
@@ -193,10 +172,11 @@ if __name__ == '__main__':
 		\centering
 		\only<1-5>{\setcounter{algorithm}{0}}
 		\begin{algorithm}[H]
+			\scriptsize
 			\begin{algorithmic}
 				\Function{Cholesky}{$A \in \mathbb{R}^{n \times n}$}
 				\alertline<1>\State $L = \Set{0} \in \mathbb{R}^{n \times n}$ \Comment{Initialisiere $L$}\\
-				
+
 				\alertline<2>\alertline<4>\For{($k=1$; $\;k \leq n$; $\;k$++)}
 				\alertline<3>\State $L_{k,k} = \sqrt{A_{k,k} - \sum_{i=1}^{k-1} L_{k,i}^2}$
 				\For{($i=k+1$; $\;i \leq n$; $\;i$++)}
@@ -250,7 +230,7 @@ You can use the \alert{\texttt{textcolor}} command to use these, but the goal is
 
 \begin{frame}[c]{Color styles}
 	These are some useful pre-defined color styles.
-	
+
 		\begin{columns}[t]
 		\begin{column}[T]{5cm}
 			\begin{itemize}
@@ -271,8 +251,8 @@ You can use the \alert{\texttt{textcolor}} command to use these, but the goal is
 		\end{column}
 		\end{columns}
 		\vspace{1em}
-		Some colors like \textcolor{FlipGreen}{FlipGreen} and \textcolor{FlipSand}{FlipSand} will automatically change tint when when you define light or dark backgrounds. \Comment{This makes it easier to swap between light/dark backgrounds by just modifying one option and recompiling.}
-		
+		Some colors like \textcolor{FlipGreen}{FlipGreen} and \textcolor{FlipSand}{FlipSand} will automatically change tint when when you define light or dark bgrounds. \Comment{This makes it easier to swap between light/dark backgrounds by just modifying one option and recompiling.}
+
 		\vspace{1em}
 		\Comment{The `comment' styles are automatically footnote-sized.}
 \end{frame}
@@ -296,7 +276,7 @@ This slide demonstrates
 	\item Note the overlap. Further, note that the particular depend on where the picture is defined. \\
 	\comment{If you define the picture at the top of the slide, then it will have fixed coordinates (using the [t] alignment). The cost is that the image is then behind all the text.}
 	\item Beamer respects \texttt{png} and \texttt{pdf} transparencies.
-\end{itemize} 
+\end{itemize}
 
 \uncover<2->
 {
@@ -318,12 +298,12 @@ This slide demonstrates
 
 \begin{frame}[c]{Columns}{Sometimes it's useful to split the screen}
 	Test why is it gray?
-	
+
 	\begin{columns}[t]
 	\begin{column}[T]{5cm}
 		Here's a column where I can write a bunch of things. \\
 		\Comment{There are all sorts of things I can do in paragraph form.}
-		
+
 		\vspace{1em}
 		\begin{block}{Blocks}
 			...work in here too.
@@ -337,17 +317,17 @@ This slide demonstrates
 		\end{itemize}
 	\end{column}
 	\end{columns}
-	
+
 \end{frame}
 
 \section{Samples of Tikz Diagrams}
 
 \begin{frame}{Feynman diagrams and overlays}
-	
+
 	\begin{columns}[t]
 	\begin{column}[T]{5cm}
 		\begin{tikzpicture}[line width=2 pt]
-			\node (middle)		at ( 0,0) [circle, thick, minimum size=2cm] {}; 
+			\node (middle)		at ( 0,0) [circle, thick, minimum size=2cm] {};
 %			\draw <1> [scalarbar, line width = 2.5pt, dash pattern=on 5pt off 4pt]	(-1,0) arc  (180:0:1cm);
 			\draw <2-> [color=FlipGreen, line width = 2.5pt, dash pattern=on 5pt off 4pt]	(-1,0) arc  (180:0:1cm);
 			\draw [fermion]		(-2,0) -- (-1,0);
@@ -376,8 +356,8 @@ This slide demonstrates
 	\end{column}
 	\end{columns}
 
-	\vspace{.5cm}	   
-	
+	\vspace{.5cm}
+
 	Here's an example where a sequence of overlays can be used to illustrate some useful physics.
 
 \end{frame}
@@ -387,33 +367,33 @@ This slide demonstrates
 	% http://old.nabble.com/minmap-and-beamer-to9778591.html
 	% http://djkhaos.wordpress.com/2009/11/18/how-to-create-an-elegant-lecture-mindmap-using-pgftikz-%E2%80%94%E2%80%94-pgftikz%E4%B9%8B%E8%BE%BE%E8%8A%AC%E5%A5%87%E5%AF%86%E7%A0%81%EF%BC%883%EF%BC%89/
 	% http://www.statistiker-wg.de/pgf/tutorials/mindmap.htm
-	
+
 	\begin{center}
-		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=charcoal!50!crimsonred, anchor=north, rounded corners, line width=.2ex] (a) 
+		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=charcoal!50!crimsonred, anchor=north, rounded corners, line width=.2ex] (a)
 		{
 			\textcolor{white}{coupling to $a$}
 		};
 		\quad
-		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=COMMENT, anchor=north, rounded corners, line width=.2ex] (a) 
+		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=COMMENT, anchor=north, rounded corners, line width=.2ex] (a)
 		{
 			\textcolor{white}{coupling to $H$}
 		};
 		\quad
-		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=jeans!50!black, anchor=north, rounded corners, line width=.2ex] (a) 
+		\tikz[scale=0.7,transform shape,baseline=-2.5ex]\node[fill=jeans!50!black, anchor=north, rounded corners, line width=.2ex] (a)
 		{
 			\textcolor{white}{coupling to $g$, $\gamma$}
 		};
 	\end{center}
-	
+
 	\begin{center}
 		\begin{tikzpicture}[scale=0.7,transform shape]%[mindmap, concept color=Alert, text=white, scale=0.7,transform shape]
 		\Huge
 		\begin{scope}[mindmap, concept color=Alert, text=white, scale=0.7,transform shape]
 		\tikzstyle{level 1 concept}+=[sibling angle=90]
 		\tikzstyle{level 2 concept}+=[sibling angle=45]
-		
-		\tikzstyle{root concept}+=[minimum size=1.5cm, text width=1cm] 
-		
+
+		\tikzstyle{root concept}+=[minimum size=1.5cm, text width=1cm]
+
 		\node[concept] (gf) {Goldstone Fermion interactions}
 		[clockwise from = 45]
 		child[concept color=COMMENT]{node[concept] (mixing) {Mixing}
@@ -466,7 +446,7 @@ This slide demonstrates
 			\draw[fermion, line width=1] (4.5,3) .. controls (3,2.5) and (3.5,2.5) .. (3,2);
 			\draw[fermion, line width=1] (1.5,3) to [out = -20, in = 110] (3,2);
 			\node[right] at (3,2) {\textcolor{COMMENT!75!white}{$(\hat g, \hat y)$}};
-		\end{tikzpicture}	
+		\end{tikzpicture}
 	\end{center}
 	\vspace{.5em}
 	Image based on Strassler's `unorthodox' review of SUSY gauge theory.
@@ -476,31 +456,31 @@ This slide demonstrates
 \section{Tables and Math Equations}
 
 \begin{frame}[c]{Including a table}
-	
+
 	Here's how you include a table.
 	\vspace{1em}
-	
-	\footnotesize	
+
+	\footnotesize
 		%%
-		\begin{tabular}{llll}\hline 
+		\begin{tabular}{llll}\hline
 		\textbf{Channel} & \textbf{Expt.} & \textbf{Bound (90\% CL)} & \textbf{SM Prediction} \\ \hline
 		\textcolor{FlipGreen}{$B^0_s \to \mu^+ \mu^-$} & \textcolor{FlipGreen}{CDF II}
 		                  & \textcolor{FlipGreen}{$<4.7\times 10^{-8}$}
-		                  & \textcolor{FlipGreen}{$(4.8\pm 1.3) \times 10^{-9}$} \\ 
+		                  & \textcolor{FlipGreen}{$(4.8\pm 1.3) \times 10^{-9}$} \\
 		$B^0_d \to \mu^+ \mu^-$ & CDF II
 		                  & $<1.5\times 10^{-8}$
-		                  & $(1.4\pm 0.4) \times 10^{-10}$  \\ 
+		                  & $(1.4\pm 0.4) \times 10^{-10}$  \\
 		\hline
 		$B^0_s \to \mu^+ e^-$ & CDF II
 		                  & $<2.0\times 10^{-7}$
-		                  & $\approx 0$ \\ 
+		                  & $\approx 0$ \\
 		$B^0_d \to \mu^+ e^-$ & CDF II
 		                  & $<6.4 \times 10^{-8}$
 		                  & $\approx 0$ \\
-		\hline 
+		\hline
 		\end{tabular}
 		\vspace{1em}
-		
+
 		\normalsize
 		% \begin{center}
 		% 	\begin{tabular}{rccccc}
@@ -512,7 +492,7 @@ This slide demonstrates
 		% 		$M$ & 1 & $\Box$ & $\Box$ & 0 & $2\frac{F-N}F$\\
 		% 		$q$ & $\Box$ & $\overline\Box$ & 1 & $\frac{N}{F-N}$ & $\frac{N}F$\\
 		% 		$\tilde q$ & $\overline\Box$ & 1 & $\overline\Box$ & $\frac{-N}{F-N}$&  $\frac{N}F$
-		% 	\end{tabular}		
+		% 	\end{tabular}
 		% \end{center}
 \end{frame}
 
@@ -520,8 +500,8 @@ This slide demonstrates
 \begin{frame}[c]{Some equations}{As if you didn't think Beamer could typeset equations...}
 	\begin{align*}
 		\left(\frac{\Lambda}{m}\right)^b = \left(\frac{\Lambda_L}{m}\right)^{b_L} \quad\Rightarrow\quad \left(\frac{\Lambda_{N,F}}{m}\right)^{3N-F}=\left(\frac{\Lambda_{N,F-1}}{m}\right)^{3N-(F-1)}
-	\end{align*}	
-	
+	\end{align*}
+
 	\begin{align*}
 		G_k(z,z') = \frac{(R')^2}{R} G_y(x,x') = \frac{(R')^2}{R} \frac{xx'}{y} \frac{T(x,y)T(x',y)}{S(wy,y)}
 	\end{align*}
@@ -536,8 +516,8 @@ This slide demonstrates
 % \begin{frame}[t]{Fancy `Handwriting' Fonts}
 % 	Only works with the \texttt{emerald} package installed.
 % 	\begin{itemize}
-% 		\item \ECFAugie{ECFAugie. This is a rather charming font.} 
-% 		\item \ECFTallPaul{ECFTallPaul. This is a pretty cramped font.} 
+% 		\item \ECFAugie{ECFAugie. This is a rather charming font.}
+% 		\item \ECFTallPaul{ECFTallPaul. This is a pretty cramped font.}
 % 		\item \ECFJD{ECFJD. This is closest to my handwriting.}
 % 	\end{itemize}
 % \end{frame}
@@ -610,17 +590,17 @@ This slide demonstrates
 
 \begin{frame}[t]{Aesthetic use of arrows and nodes}{The WIMP Miracle}
 	% expressions from 0901.4090, eq (8)
-	
+
 	\vspace{1em}
 	\tikz[baseline=-.5ex]\node[fill=Alert,anchor=base, rounded corners] (numbnote) {
 	\textcolor{white}{Contains factors of $M_\text{Pl}$, $s_0$, $\cdots$}
 	};
-	
+
 	% \vspace{1em}
-	
+
 	\large
 		\begin{align*}
-			\Omega_\text{DM} h^2 \approx 
+			\Omega_\text{DM} h^2 \approx
 			% 0.1
 			\tikz[baseline=-.5ex]\node (numb) {\textcolor{Alert}{$0.1$}};
 			\left(\frac{x_\text{f}}{20}\right)
@@ -631,20 +611,20 @@ This slide demonstrates
 				\tikz[baseline=-.5ex]\node (xsec) {\textcolor{Alert}{$3\times 10^{-26}$ cm$^3/$s}};
 				}
 			\right)
-		\end{align*}		
+		\end{align*}
 	\normalsize
-	
+
 	\vspace{ 1.5em}
-	
+
 	\hspace{6cm}\tikz[baseline=-.5ex]\node[fill=Alert,anchor=north, rounded corners] (xsecnote) {
 	\textcolor{white}{$\displaystyle\sim \left\langle\frac{\alpha^2v}{(100\text{ GeV})^2}\right\rangle$}
 	};
-	
+
 	\vspace{1em}
 	\small
 	\url{http://www.texample.net/tikz/examples/beamer-arrows/}
-	\normalsize	
-	
+	\normalsize
+
 	% \begin{itemize}%[<+-| alert@+>]
 	%     \item Transversal acceleration
 	%         \tikz[baseline=-.5ex]\node [coordinate] (n2) {};
@@ -666,15 +646,15 @@ This slide demonstrates
 	The new scalar interactions take the form
 	\begin{align*}
 		\mathcal L \supset
-		\left[\frac 12 (\partial a)^2 + 
+		\left[\frac 12 (\partial a)^2 +
 		\frac{1}{2}
-		\tikz[baseline=-2.5ex]\node[fill=Alert,anchor=north, rounded corners] 
+		\tikz[baseline=-2.5ex]\node[fill=Alert,anchor=north, rounded corners]
 		{\textcolor{white}
 		{$\displaystyle \bar\chi\slashed{\partial}\chi$}
 		};
 		% \bar\chi\slashed{\partial}\chi
 		\right]
-		\left(1 + 
+		\left(1 +
 		% c_h \frac{v}{f}h
 		\tikz[baseline=-3ex]\node[fill=Alert,anchor=north, rounded corners] (ch)
 		{\textcolor{white}
@@ -683,15 +663,15 @@ This slide demonstrates
 		+ \cdots\right)
 	\end{align*}
 	$c_h$ depends on $c_i$ and the Higgs mixing angles.
-	
+
 	\vspace{1em}
 
 	% \Comment{$c_h \to (m_h/m_s)^2$ in the large $m_s$ limit.\\ We neglect mixing with the heavy higgses.}
-	\hspace{6cm}\tikz[baseline=-3ex]\node[draw, color=Alert, anchor=north, rounded corners, line width=.2ex] (chcomment) 
+	\hspace{6cm}\tikz[baseline=-3ex]\node[draw, color=Alert, anchor=north, rounded corners, line width=.2ex] (chcomment)
 	{
 		$c_h$ controls direct detection
 	};
-	
+
 	\begin{tikzpicture}[overlay, line width=1.5, color=Alert]
 	        \path[->,color=Alert] (chcomment) edge [bend right] (ch);
 	\end{tikzpicture}
@@ -702,10 +682,10 @@ This slide demonstrates
 
 
 \begin{frame}{Fonts}
-	Some comments on fonts. 
-	
+	Some comments on fonts.
+
 	\begin{itemize}
-		\item I use \textit{XeLaTeX} and \texttt{fontspec} to specify local fonts. I try to only use readily available fonts on OS X and Adobe, but occasionally I will use a silly font like {\handwriting augie}. 
+		\item I use \textit{XeLaTeX} and \texttt{fontspec} to specify local fonts. I try to only use readily available fonts on OS X and Adobe, but occasionally I will use a silly font like {\handwriting augie}.
 		\item To mitigate incompatibility with users without these fonts, I include them as user-specified commands in the main file:\\
 		\texttt{\textbackslash newcommand\{\textbackslash handwriting\}\{\textbackslash fontspec\{augie\}\}}
 		\item If you don't have {\handwriting augie}, just replace it with a font you do have... or an empty bracket.
@@ -717,9 +697,9 @@ This slide demonstrates
 
 
 \begin{frame}[c]{Drawing arrows onto a plot}
-	
+
 	\begin{tikzpicture}%[show background grid] %% Use grid for positioning, then turn off
-		\node [inner sep=0pt,above right] 
+		\node [inner sep=0pt,above right]
 			{\includegraphics[width=7.5cm]{\CMSSMDM}};
 		% \node[right] at (.5,8) {\Comment{\ECFAugie(Left of this ruled out)}};
 		\node[right]  at (0,0) {\footnotesize\textcolor{Comment}{1104.3572}};
@@ -743,7 +723,7 @@ This slide demonstrates
 		% 	{\includegraphics[width=2cm]{WCC_psifreak}};
 	\end{tikzpicture}
 	\normalsize
-	
+
 \end{frame}
 
 
@@ -752,11 +732,11 @@ This slide demonstrates
 %
 %\begin{frame}[c]{Parameter space scan}
 %	% This is a template for Flip's Beamer theme. Features:
-%	
+%
 %	\begin{center}
 %	\begin{tikzpicture}%[show background grid] %% Use grid for positioning, then turn off
 %		\node at (5,6) {\large \textbf{Direct Detection}};
-%		\node [inner sep=0pt,above right] 
+%		\node [inner sep=0pt,above right]
 %			{\includegraphics[width=9cm]{\scan}};
 %		\node[rotate=90] at (.25,3.5) {\footnotesize $\sigma$ [cm$^2$]};
 %		\node at (5,.25) {\footnotesize$m_\chi$ [GeV]};
@@ -781,8 +761,8 @@ This slide demonstrates
 %		\node[right]  at (4,5) {\Comment{Ruled out}};
 %	\end{tikzpicture}
 %	\end{center}
-%	\normalsize 
-%		
+%	\normalsize
+%
 %
 %	% \footnotesize\textcolor{Comment}{1104.3572}
 %\end{frame}
@@ -794,8 +774,8 @@ This slide demonstrates
 % \beamertemplateshadingbackground{yellow!50}{magenta!50}
 % \begin{frame}{Test}
 % 	% \setbeamertemplate{background canvas}[vertical shading][bottom=red!20,top=yellow!30]
-% 	
-% 	
+%
+%
 % 	\textcolor{white}\Large Test
 % \end{frame}
 % }
@@ -817,38 +797,39 @@ This slide demonstrates
 \begin{frame}[c]{Problems and Kludges}{Things to work on}
 	\begin{itemize}
 		\item There seems to be a bug in Beamer where the footnote color (defined using \texttt{setbeamercolor\{footnote\}} and \texttt{setbeamercolor\{footnote mark\}}) contaminates the normal text color. For now I suggest not using footnotes. \comment{They're of questionable use in a talk, anyway.}
-		\item Even though comment text is footnote-sized, it still has normal text line spacing. The \texttt{setspace} environment can fix this, but it forces a newline and it seems to make footnotes disappear. 
+		\item Even though comment text is footnote-sized, it still has normal text line spacing. The \texttt{setspace} environment can fix this, but it forces a newline and it seems to make footnotes disappear.
 		\item Make color theme more uniform and based on palette colors.
 		% \item It seems like \texttt{setbeamertemplate} can only be used once, subsequent calls are ignored. This means that you can't use a custom background on a single slide. This seems to be due to \textit{XeLaTeX}. % http://tex.stackexchange.com/questions/29497/xelatex-preventing-beamer-from-using-different-backgrounds
 	\end{itemize}
 \end{frame}
 
 
-%% Not quite fixed 
+%% Not quite fixed
 % \setbeamertemplate{background canvas}[vertical shading][bottom=keynotebottom, middle=keynotemiddle, top=keynotetop]
 \begin{frame}[c]{Problems and Kludges}{XeLaTeX, LuaLaTeX}
-	 
+
 	XeLaTeX doesn't allow one to use \texttt{setbeamertemplate[background canvas]} multiple times (e.g. to have one slide with a different background). A fix is to include \texttt{\textbackslash def \textbackslash pgfsysdriver\{pgfsys-dvipdfmx.def\} } before the \texttt{documentclass}, but this ends up breaking the arrows pointing to nodes.
-	
+
 	In principle, LuaLaTeX can solve this, but that also requires some work since it only looks at Open Type Fonts (e.g. Gill Sans is not available by default).
-	
+
 	\comment{\url{http://tex.stackexchange.com/questions/29497/xelatex-preventing-beamer-from-using-different-backgrounds}}
 \end{frame}
 
 
 
 \begin{frame}[t]{Acknowledgements}
-	I have borrowed heavily (and learned much) from Marco Barisione's \alert{Torino theme}, which can be found one his blog. I have also learned and borrowed from Shawn Lankton's Keynote theme. 
-	
+	I have borrowed heavily (almost everything) from fliptanedo's FlipBeamerTheme. He borrowed many codes from Marco Barisione's \alert{Torino theme}, which can be found one his blog. He have also learned and borrowed from Shawn Lankton's Keynote theme.
+
 	\vspace{1em}
 	These can be found at
 	\begin{itemize}
+		\item \url{https://github.com/fliptanedo/FlipBeamerTheme}
 		\item \url{http://blog.barisione.org}
 		\item \footnotesize{\url{http://www.shawnlankton.com/2008/02/beamer-and-latex-with-keynote-theme/}}
 	\end{itemize}
-	
+
 	\vspace{1em}
-	I've tried to maintain lots of comments in the \texttt{.tex} and \texttt{.sty} files to help other template-designers. At the moment it's all a jumbled mess, though!
+	The original author have tried to maintain lots of comments in the \texttt{.tex} and \texttt{.sty} files to help other template-designers. At the moment it's all a jumbled mess, though!
 \end{frame}
 
 
